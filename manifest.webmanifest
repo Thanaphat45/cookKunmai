@@ -1,0 +1,83 @@
+{
+  "name": "หม้อเดียว — ครัวญี่ปุ่นฉบับง่าย",
+  "short_name": "หม้อเดียว",
+  "description": "รวมสูตรอาหารญี่ปุ่นทำง่ายด้วยหม้อไฟฟ้าเครื่องเดียว",
+  "lang": "th",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f4ed",
+  "theme_color": "#f7f4ed",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "รายการซื้อของ",
+      "short_name": "ซื้อของ",
+      "url": "./index.html#shopping",
+      "icons": [
+        {
+          "src": "assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "สุ่มเมนู",
+      "short_name": "สุ่มเมนู",
+      "url": "./index.html#random",
+      "icons": [
+        {
+          "src": "assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "แผนสัปดาห์",
+      "short_name": "แผน",
+      "url": "./index.html#plan",
+      "icons": [
+        {
+          "src": "assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "มีอะไรในตู้เย็น",
+      "short_name": "ตู้เย็น",
+      "url": "./index.html#fridge",
+      "icons": [
+        {
+          "src": "assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
