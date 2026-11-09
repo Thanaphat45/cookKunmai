@@ -402,5 +402,10 @@ const photoFiles = {
   nabe: 'nabe.jpg',
   nikujaga: 'nikujaga.jpg',
   ramen: 'miso-ramen.jpg',
-  'potato-salad': 'potato-salad.jpg'
+  'potato-salad': 'potato-salad.jpg',
+  'kinoko-gohan': 'kinoko-gohan.jpg',
+  'kabocha': 'kabocha.jpg',
+  'yasai-curry': 'yasai-curry.jpg',
+  'chawanmushi': 'chawanmushi.jpg',
+  'zenzai': 'zenzai.jpg'
 };

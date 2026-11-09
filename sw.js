@@ -1,5 +1,5 @@
 // Offline cache for หม้อเดียว. Bump VERSION whenever app files change.
-const VERSION = 'onepot-v9';
+const VERSION = 'onepot-v10';
 const FILES = [
   './',
   'index.html',
@@ -26,7 +26,12 @@ const FILES = [
     'nabe',
     'nikujaga',
     'miso-ramen',
-    'potato-salad'
+    'potato-salad',
+    'kinoko-gohan',
+    'kabocha',
+    'yasai-curry',
+    'chawanmushi',
+    'zenzai'
   ].map((name) => `assets/recipes/${name}.jpg`)
 ];
 
