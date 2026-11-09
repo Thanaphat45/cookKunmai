@@ -520,12 +520,13 @@ function routeFromHash(initial) {
     _closeDetail();
     return;
   }
-  if (initial && ['#shopping', '#plan', '#random', '#fridge'].includes(hash)) {
+  if (initial && ['#shopping', '#plan', '#random', '#fridge', '#tips'].includes(hash)) {
     history.replaceState(null, '', location.pathname + location.search);
     if (hash === '#shopping') renderShopping();
     if (hash === '#plan') renderPlan();
     if (hash === '#fridge') renderFridge();
     if (hash === '#random') randomRecipe(null);
+    if (hash === '#tips') renderTips();
   }
 }
 window.addEventListener('popstate', () => routeFromHash(false));
@@ -712,6 +713,125 @@ document.querySelector('#bottom-nav').addEventListener('click', (event) => {
   })[b.dataset.nav]();
 });
 updateShopCount();
+
+/* =============== Electric-pot tips page =============== */
+const TIPS = {
+  th: [
+    [
+      'รู้จักไฟของหม้อคุณ',
+      [
+        'หม้อไฟฟ้าแต่ละรุ่นแรงไม่เท่ากัน เวลาในสูตรเป็นค่าประมาณ',
+        'ครั้งแรกที่ทำเมนูไหน ให้อยู่ใกล้ ๆ และลดไฟเมื่อเดือดแรงเกินไป',
+        'จดไว้ในโน้ตของสูตรว่าหม้อเราต้องใช้เวลาเพิ่มหรือลดเท่าไร'
+      ]
+    ],
+    [
+      'หุงข้าวในหม้อไฟฟ้า',
+      [
+        'ข้าว 1 ถ้วย ใช้น้ำประมาณ 1¼ ถ้วย ซาวแล้วแช่น้ำ 20 นาที',
+        'ต้มจนเดือด ปิดฝา ลดไฟอ่อนที่สุด 15 นาที',
+        'ปิดไฟ พักฝาปิดไว้ 10 นาที แล้วค่อยคน'
+      ]
+    ],
+    [
+      'กันอาหารติดก้นหม้อ',
+      [
+        'ใส่น้ำหรือน้ำมันก่อนเปิดไฟเสมอ',
+        'ซอสข้น ๆ อย่างก้อนแกงกะหรี่หรือมิโสะ ใส่ตอนท้ายและใช้ไฟอ่อน',
+        'ใช้ตะหลิวไม้หรือซิลิโคน จะไม่ขูดผิวเคลือบของหม้อ'
+      ]
+    ],
+    [
+      'ผัดในหม้อไฟฟ้า',
+      [
+        'อุ่นหม้อเปล่าด้วยไฟแรงสุด 2 นาทีก่อนใส่ของ',
+        'ผัดทีละน้อย ถ้าใส่เยอะ ความร้อนจะตกจนกลายเป็นต้ม',
+        'ของที่สุกช้าใส่ก่อน ผักใบใส่ทีหลัง'
+      ]
+    ],
+    [
+      'ความปลอดภัย',
+      [
+        'ตั้งหม้อบนพื้นเรียบ ทนร้อน และห่างจากน้ำและมือเด็ก',
+        'อย่าเปิดหม้อทิ้งไว้แล้วออกจากห้อง',
+        'ปรุงเนื้อสัตว์ให้สุกทั่ว ไม่มีสีชมพู',
+        'เสียบปลั๊กตรงกับเต้ารับ หลีกเลี่ยงปลั๊กพ่วงที่รับไฟไม่ไหว'
+      ]
+    ],
+    [
+      'ล้างและเก็บหม้อ',
+      [
+        'ถอดปลั๊กและรอให้หม้อเย็นก่อนล้างทุกครั้ง',
+        'ห้ามจุ่มฐานหรือส่วนที่มีไฟฟ้าลงน้ำ เช็ดด้วยผ้าหมาดแทน',
+        'ใช้ฟองน้ำนุ่ม ไม่ใช้ฝอยเหล็ก ผิวเคลือบจะอยู่ได้นาน'
+      ]
+    ]
+  ],
+  en: [
+    [
+      'Know your pot',
+      [
+        'Electric pots vary in power — recipe times are estimates',
+        'Stay close the first time you cook a dish and lower the heat if it boils too hard',
+        'Write in the recipe notes how much longer or shorter your pot needs'
+      ]
+    ],
+    [
+      'Cooking rice in the pot',
+      [
+        '1 cup rice to about 1¼ cups water; rinse and soak 20 minutes',
+        'Bring to a boil, cover and cook on the lowest heat for 15 minutes',
+        'Switch off and rest covered 10 minutes before stirring'
+      ]
+    ],
+    [
+      'Stop food sticking',
+      [
+        'Always add water or oil before switching on',
+        'Add thick sauces like curry roux or miso at the end on low heat',
+        'Use wooden or silicone utensils so the coating is not scratched'
+      ]
+    ],
+    [
+      'Stir-frying in the pot',
+      [
+        'Preheat the empty pot on high for 2 minutes',
+        'Fry small amounts — too much at once and it steams instead',
+        'Add slow-cooking things first and leafy vegetables last'
+      ]
+    ],
+    [
+      'Safety',
+      [
+        'Use a flat, heat-safe surface away from water and children',
+        'Never leave the pot on while you are out of the room',
+        'Cook meat until no pink remains',
+        'Plug straight into the wall; avoid overloaded extension leads'
+      ]
+    ],
+    [
+      'Cleaning and storing',
+      [
+        'Unplug and let the pot cool before washing',
+        'Never put the base or electrical parts in water — wipe with a damp cloth',
+        'Use a soft sponge, not steel wool, to keep the coating'
+      ]
+    ]
+  ]
+};
+function renderTips() {
+  state.recipe = null;
+  const list = TIPS[LANG === 'en' ? 'en' : 'th'];
+  overlayRoot.innerHTML = `<div class="overlay" data-close-overlay><section class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="tips-title" tabindex="-1"><div class="detail-head"><button class="back-button" data-close type="button"><span>←</span> กลับ</button><button class="close-button" data-close type="button" aria-label="ปิด">✕</button></div><div class="detail-content" data-no-translate>
+  <p class="eyebrow">${LANG === 'en' ? 'for every recipe' : 'ใช้ได้กับทุกสูตร'}</p><h2 id="tips-title">${LANG === 'en' ? 'Electric pot tips' : 'เคล็ดลับหม้อไฟฟ้า'}</h2>
+  <div class="tips-list">${list.map(([title, items], i) => `<section class="tip-card"><h3><span>${String(i + 1).padStart(2, '0')}</span>${escapeHTML(title)}</h3><ul>${items.map((t) => `<li>${escapeHTML(t)}</li>`).join('')}</ul></section>`).join('')}</div>
+  </div></section></div>`;
+  overlayRoot.querySelector('.detail-panel').focus();
+}
+document.querySelector('#tips-open').addEventListener('click', (event) => {
+  state.returnFocus = event.currentTarget;
+  renderTips();
+});
 
 /* =============== In-app browsers (LINE, Facebook, Instagram…) can't install PWAs =============== */
 (function inAppBrowserHint() {

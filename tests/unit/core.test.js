@@ -9,7 +9,8 @@ const core = require('../../core.js');
 // recipes.js is a browser script with plain globals; evaluate it in a sandbox.
 const sandbox = {};
 vm.runInNewContext(
-  fs.readFileSync(path.join(__dirname, '../../recipes.js'), 'utf8') + ';this.recipes=recipes;this.photoFiles=photoFiles;',
+  fs.readFileSync(path.join(__dirname, '../../recipes.js'), 'utf8') +
+    ';this.recipes=recipes;this.photoFiles=photoFiles;',
   sandbox
 );
 const { recipes, photoFiles } = sandbox;

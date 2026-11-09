@@ -79,6 +79,17 @@
           "sizes": "192x192"
         }
       ]
+    },
+    {
+      "name": "เคล็ดลับหม้อไฟฟ้า",
+      "short_name": "เคล็ดลับ",
+      "url": "./index.html#tips",
+      "icons": [
+        {
+          "src": "assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ],
   "prefer_related_applications": false

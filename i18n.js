@@ -303,6 +303,86 @@ const RECIPES_EN = {
       'Ladle into cups and eat warm.'
     ],
     tip: 'Hot mochi is very sticky — cut it small and chew slowly, especially for children and older people.'
+  },
+  chahan: {
+    name: 'Japanese fried rice',
+    servings: '1–2 servings',
+    description: 'Fluffy egg fried rice with soy sauce — great for leftover rice, made in one electric pot',
+    ingredients: [
+      'Day-old cooked rice 2 cups',
+      'Eggs 2',
+      'Diced ham 50 g',
+      'Spring onion, sliced 2 tbsp',
+      'Vegetable oil 1 tbsp',
+      'Soy sauce 1 tsp',
+      'Salt and pepper (a pinch)'
+    ],
+    steps: [
+      'Beat the eggs, prepare the ham and spring onion, and break up the rice.',
+      'Add the oil to the pot, turn to the highest heat and let it heat for 2 minutes.',
+      'Add the eggs and stir fast. When they are half set, add the rice straight away.',
+      'Toss the rice with the egg, add the ham and stir-fry 3–4 minutes until loose and hot through.',
+      'Season with salt and pepper, drizzle soy sauce around the edge, add spring onion and fry 1 minute more.'
+    ],
+    tip: 'An electric pot is not as hot as a wok — fry 1–2 servings at a time and use day-old rice so it stays fluffy.'
+  },
+  'yaki-udon': {
+    name: 'Stir-fried udon',
+    servings: '1 serving',
+    description: 'Udon stir-fried with pork and cabbage in a sweet soy sauce — quick and filling',
+    ingredients: [
+      'Frozen udon noodles 1 block',
+      'Sliced pork 80 g',
+      'Cabbage 2 leaves',
+      'Carrot ¼',
+      'Vegetable oil 1 tbsp',
+      'Soy sauce 1 tbsp',
+      'Mirin 1 tbsp',
+      'Water 2 tbsp'
+    ],
+    steps: [
+      'Boil water in the pot, add the frozen udon for 1 minute to loosen, lift out, then pour away the water. Mind the steam.',
+      'Add the oil and fry the pork until no pink remains, about 3–4 minutes.',
+      'Add the cabbage and carrot and fry 2 minutes until starting to soften.',
+      'Add the udon, soy sauce, mirin and water, toss for 2 minutes and serve.'
+    ],
+    tip: 'Loosening the noodles first stops them clumping and sticking to the pot.'
+  },
+  'kabocha-potage': {
+    name: 'Japanese pumpkin soup',
+    servings: '2 servings',
+    description: 'Smooth, sweet and creamy pumpkin soup — meat-free and warming',
+    ingredients: ['Pumpkin 250 g', 'Onion ¼', 'Water 200 ml', 'Milk 150 ml', 'Butter 1 tbsp', 'Salt (a pinch)'],
+    steps: [
+      'Peel the pumpkin and slice thinly. Slice the onion.',
+      'Melt the butter in the pot and fry the onion 2 minutes until soft.',
+      'Add the pumpkin and water, cover and boil 12 minutes until very soft.',
+      'Switch off, mash the pumpkin smooth with a fork or masher, then add the milk.',
+      'Warm on low for 3 minutes without boiling and season with salt.'
+    ],
+    tip: 'A stick blender makes it silkier — blend with the heat off so hot soup does not splash.'
+  },
+  yudofu: {
+    name: 'Simmered tofu hot pot',
+    servings: '2 servings',
+    description: 'Soft tofu warmed in kombu broth, dipped in soy sauce — light and meat-free',
+    ingredients: [
+      'Soft tofu 300 g',
+      'Kombu seaweed 1 piece (10 cm)',
+      'Water 600 ml',
+      'Napa cabbage 2 leaves',
+      'Shiitake mushrooms 2',
+      'Soy sauce 2 tbsp',
+      'Spring onion, sliced'
+    ],
+    steps: [
+      'Put the water and kombu in the pot and soak for 10 minutes.',
+      'Cut the tofu into large pieces and slice the cabbage and shiitake.',
+      'Heat on low until small bubbles appear, add the cabbage and mushrooms and simmer 3 minutes.',
+      'Add the tofu and warm 3–5 minutes until hot through. Do not let it boil hard.',
+      'Spoon tofu and vegetables into bowls and dip in soy sauce with spring onion.'
+    ],
+    tip: 'Hard boiling makes tofu firm and full of holes — keep the heat low.'
   }
 };
 
@@ -491,6 +571,11 @@ const UI_EN = {
   ติดตั้งจากในแอปนี้ไม่ได้: "Can't install from inside this app",
   'เปิดใน Safari': 'Open in Safari',
   เปิดในเบราว์เซอร์: 'Open in browser',
+  'เคล็ดลับหม้อไฟฟ้า →': 'Electric pot tips →',
+  มีเวอร์ชันใหม่: 'New version available',
+  'แตะเพื่อโหลดของใหม่ ข้อมูลของคุณไม่หาย': 'Tap to load it — your data stays',
+  โหลดเลย: 'Reload',
+  ไว้ทีหลัง: 'Later',
   เริ่มง่าย: 'Easy',
   'สบาย ๆ': 'Relaxed',
   ปานกลาง: 'Medium',

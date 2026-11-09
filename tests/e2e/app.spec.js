@@ -94,6 +94,19 @@ test('English interface switch', async ({ page }) => {
   await expect(page.locator('[data-timer-start="12"]')).toBeVisible();
 });
 
+test('tips page opens and new recipes have photos and English names', async ({ page }) => {
+  await expect(page.locator('.recipe-card')).toHaveCount(19);
+  await page.locator('#tips-open').click();
+  await expect(page.locator('.tip-card')).toHaveCount(6);
+  await page.locator('.detail-head [data-close]').first().click();
+  for (const id of ['chahan', 'yaki-udon', 'kabocha-potage', 'yudofu']) {
+    await expect(page.locator(`[data-open="${id}"] img.food-photo`)).toHaveAttribute('src', `assets/recipes/${id}.jpg`);
+  }
+  await page.locator('#lang-toggle').click();
+  await page.locator('[data-open="yudofu"]').click();
+  await expect(page.locator('#detail-title')).toHaveText('Simmered tofu hot pot');
+});
+
 const SIZES = [
   [320, 640],
   [375, 740],
@@ -111,16 +124,19 @@ for (const [width, height] of SIZES) {
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow).toBeLessThanOrEqual(0);
     await page.locator('[data-open="nabe"]').click();
+    // the panel slides in (0.25s); measure only after the animation has finished
+    await page.locator('.detail-panel').evaluate((el) => Promise.all(el.getAnimations().map((x) => x.finished)));
     const panel = await page.locator('.detail-panel').boundingBox();
     // 1px tolerance: sub-pixel layout can report e.g. 414.0000029 on a 414px screen
     expect(panel.x).toBeGreaterThanOrEqual(-1);
     expect(panel.width).toBeLessThanOrEqual(width + 1);
     if (width <= 600) {
-      const small = await page.evaluate(() =>
-        [...document.querySelectorAll('.detail-panel button, .detail-panel select, .detail-panel label.ingredient')]
-          .filter((e) => e.offsetParent && !e.closest('.ingredient-list .term') && !e.classList.contains('term'))
-          .map((e) => e.getBoundingClientRect())
-          .filter((r) => r.height < 40).length
+      const small = await page.evaluate(
+        () =>
+          [...document.querySelectorAll('.detail-panel button, .detail-panel select, .detail-panel label.ingredient')]
+            .filter((e) => e.offsetParent && !e.closest('.ingredient-list .term') && !e.classList.contains('term'))
+            .map((e) => e.getBoundingClientRect())
+            .filter((r) => r.height < 40).length
       );
       expect(small).toBe(0);
     }

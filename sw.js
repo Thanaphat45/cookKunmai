@@ -1,5 +1,5 @@
 // Offline cache for หม้อเดียว. Bump VERSION whenever app files change.
-const VERSION = 'onepot-v11';
+const VERSION = 'onepot-v12';
 const FILES = [
   './',
   'index.html',
@@ -31,7 +31,11 @@ const FILES = [
     'kabocha',
     'yasai-curry',
     'chawanmushi',
-    'zenzai'
+    'zenzai',
+    'chahan',
+    'yaki-udon',
+    'kabocha-potage',
+    'yudofu'
   ].map((name) => `assets/recipes/${name}.jpg`)
 ];
 
@@ -54,6 +58,17 @@ self.addEventListener('activate', (event) => {
 });
 
 // Network first (so edits show up), fall back to cache when offline.
+// Tapping a timer notification brings the app back to the front
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((list) => {
+      const open = list.find((c) => c.url.startsWith(self.registration.scope));
+      return open ? open.focus() : self.clients.openWindow('./');
+    })
+  );
+});
+
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== location.origin) return;
   event.respondWith(

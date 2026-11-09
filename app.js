@@ -444,6 +444,7 @@ function timerBlock(stepText) {
   return `<div class="step-timer ${timer.done ? 'done' : ''}" role="timer">${inner}</div>`;
 }
 function startTimer(minutes) {
+  askNotificationPermission();
   stopTimer(false);
   timer.total = minutes * 60000;
   timer.warned = false;
@@ -490,6 +491,7 @@ function finishTimer() {
   timer.done = true;
   document.title = '⏰ ครบเวลา — หม้อเดียว';
   alarm();
+  notifyTimerDone();
   if (overlayRoot.querySelector('.cooking-screen')) renderCooking();
 }
 function stopTimer(rerender = true) {
@@ -764,8 +766,62 @@ document.addEventListener('keydown', (event) => {
 });
 
 /* ---- PWA: offline + installable ---- */
-if ('serviceWorker' in navigator && location.protocol.startsWith('http'))
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  window.addEventListener('load', async () => {
+    const hadController = !!navigator.serviceWorker.controller;
+    try {
+      const reg = await navigator.serviceWorker.register('sw.js');
+      // A new version took over while the app was open → offer a reload (not on the very first install)
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (hadController) showUpdateBar();
+      });
+      // Check for a new version whenever the app comes back to the front
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') reg.update().catch(() => {});
+      });
+    } catch {
+      /* offline support is optional */
+    }
+  });
+}
+function showUpdateBar() {
+  if (document.querySelector('.update-bar')) return;
+  const bar = document.createElement('div');
+  bar.className = 'update-bar';
+  bar.setAttribute('role', 'status');
+  bar.innerHTML = `<p>มีเวอร์ชันใหม่<small>แตะเพื่อโหลดของใหม่ ข้อมูลของคุณไม่หาย</small></p><button class="primary-button" type="button" data-update-now>โหลดเลย</button><button class="resume-dismiss" type="button" aria-label="ไว้ทีหลัง">✕</button>`;
+  bar.querySelector('[data-update-now]').addEventListener('click', () => location.reload());
+  bar.querySelector('.resume-dismiss').addEventListener('click', () => bar.remove());
+  document.body.appendChild(bar);
+}
+
+/* ---- System notification when a timer ends while the app is in the background ---- */
+function askNotificationPermission() {
+  if ('Notification' in window && Notification.permission === 'default')
+    Notification.requestPermission().catch?.(() => {});
+}
+function notifyTimerDone() {
+  if (!('Notification' in window) || Notification.permission !== 'granted' || document.visibilityState === 'visible')
+    return;
+  const t = (s) => (typeof tr === 'function' ? tr(s) : s);
+  const body = [state.recipe?.name, timer.label].filter(Boolean).join(' • ');
+  const options = {
+    body: t(body),
+    tag: 'onepot-timer',
+    renotify: true,
+    requireInteraction: true,
+    vibrate: [300, 150, 300, 150, 300],
+    icon: 'assets/icons/icon-192.png',
+    badge: 'assets/icons/icon-192.png'
+  };
+  navigator.serviceWorker?.ready
+    .then((reg) => reg.showNotification(t('ครบเวลาแล้ว!'), options))
+    .catch(() => {
+      try {
+        new Notification(t('ครบเวลาแล้ว!'), options);
+      } catch {}
+    });
+}
 overlayRoot.addEventListener('input', (event) => {
   const note = event.target.closest('[data-note]');
   if (note) saveNote(note.dataset.note, note.value);
