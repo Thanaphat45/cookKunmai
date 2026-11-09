@@ -1,5 +1,5 @@
 // Offline cache for หม้อเดียว. Bump VERSION whenever app files change.
-const VERSION = 'onepot-v10';
+const VERSION = 'onepot-v11';
 const FILES = [
   './',
   'index.html',

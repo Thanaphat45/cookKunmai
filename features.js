@@ -713,6 +713,23 @@ document.querySelector('#bottom-nav').addEventListener('click', (event) => {
 });
 updateShopCount();
 
+/* =============== In-app browsers (LINE, Facebook, Instagram…) can't install PWAs =============== */
+(function inAppBrowserHint() {
+  const ua = navigator.userAgent;
+  const isLine = /\bLine\//i.test(ua);
+  const inApp = isLine || /FBAN|FBAV|FB_IAB|Instagram|Messenger|TikTok|Twitter/i.test(ua);
+  if (!inApp || matchMedia('(display-mode: standalone)').matches) return;
+  const isIOS = /iPhone|iPad|iPod/i.test(ua);
+  const url = new URL(location.href);
+  url.searchParams.set('openExternalBrowser', '1');
+  const bar = document.createElement('div');
+  bar.className = 'inapp-bar';
+  bar.setAttribute('role', 'status');
+  bar.innerHTML = `<p><strong>ติดตั้งจากในแอปนี้ไม่ได้</strong><small>${isIOS ? 'กด ⋯ หรือปุ่มแชร์ แล้วเลือก “เปิดใน Safari” จากนั้นกด แชร์ → เพิ่มไปยังหน้าจอโฮม' : 'กด ⋮ แล้วเลือก “เปิดในเบราว์เซอร์” (Chrome) จากนั้นกด ติดตั้งแอป'}</small></p>${isLine ? `<a class="primary-button" href="${escapeHTML(url.href)}">เปิดใน${isIOS ? ' Safari' : 'เบราว์เซอร์'}</a>` : ''}<button type="button" class="resume-dismiss" aria-label="ปิด">✕</button>`;
+  bar.querySelector('.resume-dismiss').addEventListener('click', () => bar.remove());
+  document.body.appendChild(bar);
+})();
+
 const langBtn = document.querySelector('#lang-toggle');
 langBtn.textContent = LANG === 'en' ? 'ไทย' : 'EN';
 langBtn.setAttribute('aria-label', LANG === 'en' ? 'เปลี่ยนเป็นภาษาไทย' : 'Switch to English');

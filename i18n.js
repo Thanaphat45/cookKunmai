@@ -488,6 +488,9 @@ const UI_EN = {
   ใส่ชื่อเมนูก่อนนะ: 'Add a dish name first',
   'ใส่วัตถุดิบอย่างน้อย 1 อย่าง': 'Add at least 1 ingredient',
   'ใส่วิธีทำอย่างน้อย 1 ขั้น': 'Add at least 1 step',
+  ติดตั้งจากในแอปนี้ไม่ได้: "Can't install from inside this app",
+  'เปิดใน Safari': 'Open in Safari',
+  เปิดในเบราว์เซอร์: 'Open in browser',
   เริ่มง่าย: 'Easy',
   'สบาย ๆ': 'Relaxed',
   ปานกลาง: 'Medium',
@@ -585,6 +588,8 @@ const UI_PATTERNS = [
     'No English voice found on this device. Add one in your system speech settings.'
   ],
   [/^พื้นที่เก็บข้อมูลในเบราว์เซอร์เต็ม.*$/, 'Browser storage is full — try a smaller photo or none.'],
+  [/^กด ⋯ หรือปุ่มแชร์.*$/, 'Tap ⋯ or Share, choose "Open in Safari", then Share → Add to Home Screen'],
+  [/^กด ⋮ แล้วเลือก.*$/, 'Tap ⋮, choose "Open in browser" (Chrome), then Install app'],
   [/^เปิดรูปนี้ไม่ได้ ลองรูปอื่นนะ$/, "Couldn't open that photo — try another."],
   [/^ขั้นที่ (\d+)\. /, 'Step $1. '],
   [/^เสร็จแล้ว อร่อยได้เลย$/, 'Done, enjoy'],
