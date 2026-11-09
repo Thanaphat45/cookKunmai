@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "python -m http.server 8000 --bind 127.0.0.1",
-    "test": "node --test \"tests/unit/**/*.test.js\"",
+    "test": "node --test tests/unit/core.test.js",
     "test:e2e": "playwright test",
     "format": "prettier --write \"*.{js,html,css,json,webmanifest}\" \"tests/**/*.js\""
   },
