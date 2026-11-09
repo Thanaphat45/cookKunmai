@@ -79,7 +79,7 @@ function mergedShopping(){const groups=new Map();shopping.forEach(item=>{const p
 const STOP_PARTS=['ริน','น้ำ','หอม','หัว','มัน','เนื้อ','ใส่','ให้','หม้อ','ทอด','ซุป'];
 function coreName(name){return name.replace(/หั่น|ซอย|สไลซ์บาง|สไลซ์|ขูด|แช่แข็ง|ปรุงรส|แห้ง|หรือ.*$/g,'').trim()}
 function longestCommon(a,b){let best='';for(let i=0;i<a.length;i++)for(let j=i+best.length+1;j<=a.length;j++){const sub=a.slice(i,j);if(b.includes(sub))best=sub;else break}return best}
-function stepIngredients(recipe,stepIndex){const step=recipe.steps[stepIndex];const parsed=recipe.ingredients.map(text=>({text:scaleText(text,state.scale),...parseIngredient(text)}));const fullNames=parsed.map(p=>p.name);return parsed.filter(p=>{const core=coreName(p.name);if(!core)return false;if(step.includes(core))return true;const common=longestCommon(core,step);return common.length>=3&&!STOP_PARTS.includes(common)&&!fullNames.some(n=>n!==p.name&&n===common)})}
+function stepIngredients(recipe,stepIndex){const step=recipe.steps[stepIndex];const parsed=recipe.ingredients.map(text=>({text:scaleText(text,state.scale),...parseIngredient(text)}));const fullNames=parsed.map(p=>p.name);return parsed.filter(p=>{const core=coreName(p.name);if(!core)return false;if(core.startsWith('ไข่')&&!step.includes('ไข่'))return false;if(step.includes(core))return true;const common=longestCommon(core,step);return common.length>=3&&!STOP_PARTS.includes(common)&&!fullNames.some(n=>n!==p.name&&n===common)})}
 function stepIngredientsBlock(recipe,stepIndex){const items=stepIngredients(recipe,stepIndex);if(!items.length)return'';return `<div class="step-ingredients"><span>ใช้ในขั้นนี้</span>${items.map(p=>`<em>${escapeHTML(p.text)}</em>`).join('')}</div>`}
 
 /* ---- Substitutions ---- */

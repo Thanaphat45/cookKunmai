@@ -2,7 +2,7 @@
 <html lang="th">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#f7f4ed" />
     <meta name="description" content="รวมสูตรอาหารญี่ปุ่นทำง่ายด้วยหม้อไฟฟ้าเครื่องเดียว" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -72,6 +72,13 @@
       </section>
       <footer class="footer"><span>หม้อเดียว <i>•</i> ทำอาหารให้ง่ายขึ้นอีกนิด</span><span>สูตรสำหรับหม้อไฟฟ้าทั่วไป ปรับเวลาให้เข้ากับหม้อของคุณได้เลย <i>•</i> <a href="assets/recipes/credits.html">เครดิตภาพ</a></span><span class="footer-tools">ข้อมูลของฉัน<button class="ghost-button" id="export-data" type="button">สำรองข้อมูล</button><button class="ghost-button" id="import-data" type="button">นำเข้า</button><input type="file" id="import-file" accept="application/json,.json" hidden /></span></footer>
     </main>
+    <nav class="bottom-nav" id="bottom-nav" aria-label="เมนูหลัก">
+      <button type="button" data-nav="home" class="is-active"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5h-5v5H5a1 1 0 0 1-1-1z"/></svg><span>หน้าแรก</span></button>
+      <button type="button" data-nav="fridge"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M6 10h12M9 6.5v1.5M9 13v2"/></svg><span>ตู้เย็น</span></button>
+      <button type="button" data-nav="random" class="nav-main"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="9" cy="9" r=".9" fill="currentColor"/><circle cx="15" cy="15" r=".9" fill="currentColor"/><circle cx="15" cy="9" r=".9" fill="currentColor"/><circle cx="9" cy="15" r=".9" fill="currentColor"/></svg><span>สุ่มเมนู</span></button>
+      <button type="button" data-nav="plan"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>แผน</span></button>
+      <button type="button" data-nav="shop"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.3a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.2"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg><span>ซื้อของ</span><b id="nav-shop-count" hidden>0</b></button>
+    </nav>
     <div id="overlay-root"></div>
     <script src="app.js"></script>
     <script src="features.js"></script>

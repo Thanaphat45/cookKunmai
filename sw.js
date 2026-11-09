@@ -1,5 +1,5 @@
 // Offline cache for หม้อเดียว. Bump VERSION whenever app files change.
-const VERSION = 'onepot-v6';
+const VERSION = 'onepot-v8';
 const FILES = [
   './', 'index.html', 'styles.css', 'app.js', 'features.js',
   'assets/icons/icon-192.png', 'assets/icons/icon-512.png', 'assets/icons/icon-maskable-512.png', 'assets/icons/apple-touch-icon.png', 'favicon.svg', 'manifest.webmanifest',
@@ -24,7 +24,7 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== location.origin) return;
   event.respondWith(
-    fetch(event.request)
+    fetch(event.request, { cache: 'no-cache' })
       .then(response => {
         if (response.ok) {
           const copy = response.clone();

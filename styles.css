@@ -195,3 +195,82 @@ body{background:var(--paper);color:var(--ink)}
 }
 .star{color:var(--muted);opacity:.35}.star.is-on{opacity:1}
 @media (max-width:600px){.photo-drop{height:120px}}
+/* ---- mobile pass: touch targets ≥44px, readable type, bottom nav ---- */
+.bottom-nav{display:none}
+@media (max-width:600px){
+  body{padding-bottom:calc(68px + env(safe-area-inset-bottom))}
+  .bottom-nav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:9;background:var(--paper);border-top:1px solid var(--line);padding:4px 4px calc(4px + env(safe-area-inset-bottom));box-shadow:0 -6px 18px rgba(0,0,0,.06)}
+  .bottom-nav button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:56px;border:0;background:none;color:var(--muted);font:500 11.5px var(--sans);cursor:pointer;border-radius:12px;-webkit-tap-highlight-color:transparent}
+  .bottom-nav button .ico{width:22px;height:22px}
+  .bottom-nav button.is-active{color:var(--ink)}
+  .bottom-nav button:active{background:var(--line)}
+  .bottom-nav .nav-main .ico{width:26px;height:26px;color:var(--red)}
+  .bottom-nav b{position:absolute;top:5px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;box-sizing:border-box;border-radius:9px;background:var(--red);color:white;font:600 10.5px/18px var(--sans)}
+  /* header: plan + shop live in the bottom nav on phones */
+  #plan-toggle,#shop-toggle{display:none}
+  .top-actions .saved-link{min-height:44px;min-width:44px;justify-content:center}
+  .theme-toggle{width:44px;height:44px}
+  /* filter row: the moved buttons go away, filters first */
+  #fridge-open,#random-pick,.filter-spacer{display:none}
+  #quick-toggle,#avoid-toggle{order:-1}
+  .filter-row{gap:8px;padding-bottom:8px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(to right,#000 85%,transparent)}
+  .filter-chip{min-height:44px;padding:0 16px;font-size:13px;scroll-snap-align:start}
+  .filter-chip .ico{width:15px;height:15px}
+  .avoid-row{gap:8px}
+  .avoid-chip{min-height:44px;padding:0 14px;font-size:13px}
+  .avoid-chip input{width:18px;height:18px}
+  .avoid-row small{flex-basis:100%;margin:0;font-size:12px}
+  .search-box input{font-size:16px}
+  /* cards */
+  .card-save{width:44px;height:44px;top:8px;right:8px;font-size:19px}
+  .tag{font-size:11.5px;padding:5px 10px}
+  .cook-time,.dish-number{font-size:12px}
+  .jp-name{font-size:12px}
+  .card-desc{font-size:13px;line-height:1.6}
+  .card-foot{font-size:12px}
+  .budget{font-size:12px}
+  .mini-badge{font-size:11.5px;padding:4px 9px}
+  .footer{font-size:12px}
+  .footer a{display:inline-block;padding:10px 0}
+  .footer-tools .ghost-button{min-height:44px;padding:0 16px;font-size:13px}
+  .suggest{font-size:14px}
+  .suggest .ghost-button{min-height:44px}
+  .add-recipe{min-height:56px}
+  /* status notes were hidden by an older mobile rule */
+  .sheet-actions .small-note,.detail-extras .small-note{display:block}
+  /* detail + sheets */
+  .back-button,.close-button{min-height:44px;min-width:44px}
+  .detail-intro,.steps-list li,.cook-hint{font-size:14px}
+  .detail-section-title span{font-size:12px}
+  .ingredient{font-size:13px;padding:12px 10px;min-height:44px;box-sizing:border-box}
+  .ingredient input{width:18px;height:18px;flex:none}
+  .scale-bar button{min-height:44px;min-width:52px;font-size:14px}
+  .scale-bar{font-size:13px}
+  .add-shop,.subs summary{min-height:48px}
+  .subs{font-size:13.5px}
+  .ghost-button,.primary-button{min-height:44px;font-size:14px}
+  .ghost-button.small{min-height:40px;font-size:13px;padding:0 14px}
+  .recipe-note,.field input,.field select,.field textarea{font-size:16px}
+  .plan-row select{min-height:44px;font-size:14px}
+  .fridge-chip{min-height:40px;font-size:13.5px;padding:0 14px}
+  .fridge-result strong{font-size:15px}
+  .fridge-result small{font-size:13px}
+  .star{font-size:38px;padding:4px}
+  /* cooking screen */
+  .cook-top{padding:0 8px}
+  .cook-top .back-button{min-width:44px;padding:0 10px}
+  .font-btns button{min-width:44px;min-height:44px;font-size:14px}
+  .speak-toggle{min-height:44px;min-width:44px;justify-content:center;padding:0 12px}
+  .cook-controls button{min-height:52px;font-size:15px;padding:0 18px}
+  .step-count{font-size:14px}
+  .step-ingredients{font-size:13px}
+  .step-ingredients em{padding:7px 12px}
+  .timer-btn{min-height:44px;font-size:14px;padding:0 16px}
+  /* floating bits sit above the nav */
+  .resume-bar,.term-pop{bottom:calc(80px + env(safe-area-inset-bottom))}
+  .overlay .term-pop,.cooking-screen~.term-pop{bottom:18px}
+}
+@media (max-width:600px){.brand{min-height:44px;display:flex;align-items:center}.suggest .ghost-button.small{min-height:44px;font-size:13.5px}.footer a{padding:12px 0}.eyebrow{font-size:12px}.search-box kbd{display:none}}
+[hidden]{display:none!important}
+.filter-row{scrollbar-width:none}.filter-row::-webkit-scrollbar{display:none}
+@media (max-width:600px){.cook-top>span.font-btns{display:inline-flex}}

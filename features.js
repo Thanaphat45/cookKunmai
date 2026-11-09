@@ -358,6 +358,30 @@ document.querySelector('#suggest').addEventListener('click', event => {
 document.querySelector('#add-recipe').addEventListener('click', event => { state.returnFocus = event.currentTarget; renderRecipeForm(null); });
 document.querySelector('#fridge-open').addEventListener('click', event => { state.returnFocus = event.currentTarget; renderFridge(); });
 
+/* =============== Mobile bottom nav =============== */
+const _updateShopCount = updateShopCount;
+updateShopCount = function () {
+  _updateShopCount();
+  const badge = document.querySelector('#nav-shop-count');
+  if (!badge) return;
+  const n = shopping.filter(i => !i.done).length;
+  badge.textContent = n > 99 ? '99+' : String(n);
+  badge.hidden = n === 0;
+};
+document.querySelector('#bottom-nav').addEventListener('click', event => {
+  const b = event.target.closest('[data-nav]');
+  if (!b) return;
+  state.returnFocus = b;
+  ({
+    home: () => window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }),
+    fridge: () => renderFridge(),
+    random: () => randomRecipe(b),
+    plan: () => { state.recipe = null; renderPlan(); },
+    shop: () => { state.recipe = null; renderShopping(); }
+  })[b.dataset.nav]();
+});
+updateShopCount();
+
 ['onepot-custom', 'onepot-history', 'onepot-avoid', 'onepot-fridge', 'onepot-cook-scale'].forEach(k => BACKUP_KEYS.push(k));
 applyCookScale();
 render();
