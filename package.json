@@ -1,0 +1,17 @@
+{
+  "name": "moh-diao",
+  "version": "1.0.0",
+  "private": true,
+  "description": "หม้อเดียว — Japanese recipes for a single electric pot (offline PWA)",
+  "license": "MIT",
+  "scripts": {
+    "start": "python -m http.server 8000 --bind 127.0.0.1",
+    "test": "node --test \"tests/unit/**/*.test.js\"",
+    "test:e2e": "playwright test",
+    "format": "prettier --write \"*.{js,html,css,json,webmanifest}\" \"tests/**/*.js\""
+  },
+  "devDependencies": {
+    "@playwright/test": "1.48.2",
+    "prettier": "3.3.3"
+  }
+}

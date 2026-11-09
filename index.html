@@ -9,27 +9,58 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
     <title>หม้อเดียว — ครัวญี่ปุ่นฉบับง่าย</title>
-    <script>try{const t=JSON.parse(localStorage.getItem("onepot-theme"));if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch{}</script>
+    <script>
+      try {
+        const t = JSON.parse(localStorage.getItem('onepot-theme'));
+        if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="#home" aria-label="หม้อเดียว หน้าหลัก">
+      <a class="brand" href="#home">
         <span class="brand-mark" aria-hidden="true">鍋</span>
         <span>หม้อเดียว<span class="brand-dot">.</span></span>
       </a>
       <div class="top-note"><span class="status-dot"></span> ทำง่ายด้วยหม้อไฟฟ้าเครื่องเดียว</div>
       <div class="top-actions">
-      <button class="saved-link theme-toggle" id="theme-toggle" type="button" aria-label="สลับโหมดมืด"></button>
-      <button class="saved-link" id="plan-toggle" type="button">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>แผนสัปดาห์</span>
-      </button>
-      <button class="saved-link" id="shop-toggle" type="button">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.3a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.2"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg><span>ซื้อของ</span><span class="saved-count" id="shop-count">0</span>
-      </button>
-      <button class="saved-link" id="saved-toggle" type="button" aria-pressed="false">
-        <span aria-hidden="true">♡</span><span>เมนูที่บันทึก</span><span class="saved-count" id="saved-count">0</span>
-      </button>
+        <button class="saved-link lang-toggle" id="lang-toggle" type="button" data-no-translate>EN</button>
+        <button class="saved-link theme-toggle" id="theme-toggle" type="button" aria-label="สลับโหมดมืด"></button>
+        <button class="saved-link" id="plan-toggle" type="button">
+          <svg
+            class="ico"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3.5" y="5" width="17" height="15" rx="2.5" />
+            <path d="M3.5 10h17M8 3v4M16 3v4" /></svg
+          ><span>แผนสัปดาห์</span>
+        </button>
+        <button class="saved-link" id="shop-toggle" type="button">
+          <svg
+            class="ico"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.3a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.2" />
+            <circle cx="9.5" cy="19.5" r="1.3" />
+            <circle cx="17" cy="19.5" r="1.3" /></svg
+          ><span>ซื้อของ</span><span class="saved-count" id="shop-count">0</span>
+        </button>
+        <button class="saved-link" id="saved-toggle" type="button" aria-pressed="false">
+          <span aria-hidden="true">♡</span><span>เมนูที่บันทึก</span><span class="saved-count" id="saved-count">0</span>
+        </button>
       </div>
     </header>
 
@@ -39,20 +70,32 @@
           <p class="eyebrow"><span>おいしい</span> • อร่อยแบบไม่ยุ่งยาก</p>
           <h1>ครัวญี่ปุ่น<br /><em>เริ่มที่หม้อใบเดียว</em></h1>
           <p class="hero-text">มีแค่หม้อไฟฟ้าก็ทำมื้ออร่อยได้ เลือกเมนูที่ชอบ แล้วทำตามทีละขั้นได้เลย</p>
-          <div class="hero-pills"><span>10 สูตรเริ่มต้น</span><span>วัตถุดิบหาง่าย</span><span>ไม่ต้องมีเตา</span></div>
+          <div class="hero-pills"><span>15 สูตรเริ่มต้น</span><span>วัตถุดิบหาง่าย</span><span>ไม่ต้องมีเตา</span></div>
         </div>
         <div class="hero-art" aria-hidden="true">
           <div class="sun-disc"></div>
           <div class="hero-label">今日のごはん<small>มื้ออร่อยของวันนี้</small></div>
-          <div class="hero-bowl"><div class="hero-rice"></div><i class="topping t1"></i><i class="topping t2"></i><i class="topping t3"></i><i class="topping t4"></i><i class="topping t5"></i></div>
+          <div class="hero-bowl">
+            <div class="hero-rice"></div>
+            <i class="topping t1"></i><i class="topping t2"></i><i class="topping t3"></i><i class="topping t4"></i
+            ><i class="topping t5"></i>
+          </div>
           <span class="art-spark spark-a">✳</span><span class="art-spark spark-b">✳</span>
         </div>
       </section>
 
       <section class="collection" aria-labelledby="collection-title">
         <div class="section-heading">
-          <div><p class="eyebrow">มื้อนี้ทำอะไรดี</p><h2 id="collection-title">เลือกเมนู <span id="result-count">10</span> อย่าง</h2></div>
-          <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="ค้นหาเมนูหรือวัตถุดิบ..." autocomplete="off" /><kbd>⌘ K</kbd></label>
+          <div>
+            <p class="eyebrow">มื้อนี้ทำอะไรดี</p>
+            <h2 id="collection-title">เลือกเมนู <span id="result-count">10</span> อย่าง</h2>
+          </div>
+          <label class="search-box"
+            ><span aria-hidden="true">⌕</span
+            ><input id="search" type="search" placeholder="ค้นหาเมนูหรือวัตถุดิบ..." autocomplete="off" /><kbd
+              >⌘ K</kbd
+            ></label
+          >
         </div>
         <div class="filter-row" id="filters" role="group" aria-label="กรองประเภทอาหาร">
           <button class="filter-chip is-active" data-category="ทั้งหมด" type="button">ทั้งหมด <span>10</span></button>
@@ -60,26 +103,193 @@
           <button class="filter-chip" data-category="ซุป" type="button">ซุป &amp; เส้น</button>
           <button class="filter-chip" data-category="หม้อไฟ" type="button">หม้อไฟ</button>
           <button class="filter-chip" data-category="ของเคียง" type="button">ของเคียง</button>
-          <button class="filter-chip" id="quick-toggle" type="button" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6z"/></svg> ไม่เกิน 20 นาที</button>
-          <button class="filter-chip" id="avoid-toggle" type="button" aria-expanded="false" aria-controls="avoid-row"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="m6.5 6.5 11 11"/></svg> ไม่กิน…</button>
-          <span class="filter-spacer"></span><button class="filter-chip" id="fridge-open" type="button"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M6 10h12M9 6.5v1.5M9 13v2"/></svg> มีอะไรในตู้เย็น</button><button class="filter-chip random-chip" id="random-pick" type="button"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="9" cy="9" r=".9" fill="currentColor"/><circle cx="15" cy="15" r=".9" fill="currentColor"/><circle cx="15" cy="9" r=".9" fill="currentColor"/><circle cx="9" cy="15" r=".9" fill="currentColor"/></svg> สุ่มเมนูให้หน่อย</button>
+          <button class="filter-chip" data-category="ของหวาน" type="button">ของหวาน</button>
+          <button class="filter-chip" id="quick-toggle" type="button" aria-pressed="false">
+            <svg
+              class="ico"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linejoin="round"
+            >
+              <path d="M13 3 5 13.5h6L10 21l8-10.5h-6z" />
+            </svg>
+            ไม่เกิน 20 นาที
+          </button>
+          <button class="filter-chip" id="avoid-toggle" type="button" aria-expanded="false" aria-controls="avoid-row">
+            <svg
+              class="ico"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="8" />
+              <path d="m6.5 6.5 11 11" />
+            </svg>
+            ไม่กิน…
+          </button>
+          <span class="filter-spacer"></span
+          ><button class="filter-chip" id="fridge-open" type="button">
+            <svg
+              class="ico"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="6" y="3" width="12" height="18" rx="2" />
+              <path d="M6 10h12M9 6.5v1.5M9 13v2" />
+            </svg>
+            มีอะไรในตู้เย็น</button
+          ><button class="filter-chip random-chip" id="random-pick" type="button">
+            <svg
+              class="ico"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="4" y="4" width="16" height="16" rx="3.5" />
+              <circle cx="9" cy="9" r=".9" fill="currentColor" />
+              <circle cx="15" cy="15" r=".9" fill="currentColor" />
+              <circle cx="15" cy="9" r=".9" fill="currentColor" />
+              <circle cx="9" cy="15" r=".9" fill="currentColor" />
+            </svg>
+            สุ่มเมนูให้หน่อย
+          </button>
         </div>
         <div class="avoid-row" id="avoid-row" hidden></div>
         <div class="suggest" id="suggest" hidden></div>
         <div class="recipe-grid" id="recipe-grid"></div>
-        <button class="add-recipe" id="add-recipe" type="button"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg><span>เพิ่มสูตรของฉัน</span></button>
-        <div class="empty-state" id="empty-state" hidden><span>🍵</span><h3>ยังไม่เจอเมนูนี้</h3><p>ลองค้นด้วยชื่อเมนูหรือวัตถุดิบอื่นดูนะ</p><button id="clear-search" class="text-button" type="button">ล้างตัวกรอง</button></div>
+        <button class="add-recipe" id="add-recipe" type="button">
+          <svg
+            class="ico"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 5v14M5 12h14" /></svg
+          ><span>เพิ่มสูตรของฉัน</span>
+        </button>
+        <div class="empty-state" id="empty-state" hidden>
+          <span>🍵</span>
+          <h3>ยังไม่เจอเมนูนี้</h3>
+          <p>ลองค้นด้วยชื่อเมนูหรือวัตถุดิบอื่นดูนะ</p>
+          <button id="clear-search" class="text-button" type="button">ล้างตัวกรอง</button>
+        </div>
       </section>
-      <footer class="footer"><span>หม้อเดียว <i>•</i> ทำอาหารให้ง่ายขึ้นอีกนิด</span><span>สูตรสำหรับหม้อไฟฟ้าทั่วไป ปรับเวลาให้เข้ากับหม้อของคุณได้เลย <i>•</i> <a href="assets/recipes/credits.html">เครดิตภาพ</a></span><span class="footer-tools">ข้อมูลของฉัน<button class="ghost-button" id="export-data" type="button">สำรองข้อมูล</button><button class="ghost-button" id="import-data" type="button">นำเข้า</button><input type="file" id="import-file" accept="application/json,.json" hidden /></span></footer>
+      <footer class="footer">
+        <span>หม้อเดียว <i>•</i> ทำอาหารให้ง่ายขึ้นอีกนิด</span
+        ><span
+          >สูตรสำหรับหม้อไฟฟ้าทั่วไป ปรับเวลาให้เข้ากับหม้อของคุณได้เลย <i>•</i>
+          <a href="assets/recipes/credits.html">เครดิตภาพ</a></span
+        ><span class="footer-tools"
+          >ข้อมูลของฉัน<button class="ghost-button" id="export-data" type="button">สำรองข้อมูล</button
+          ><button class="ghost-button" id="import-data" type="button">นำเข้า</button
+          ><input type="file" id="import-file" accept="application/json,.json" hidden
+        /></span>
+      </footer>
     </main>
     <nav class="bottom-nav" id="bottom-nav" aria-label="เมนูหลัก">
-      <button type="button" data-nav="home" class="is-active"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5h-5v5H5a1 1 0 0 1-1-1z"/></svg><span>หน้าแรก</span></button>
-      <button type="button" data-nav="fridge"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M6 10h12M9 6.5v1.5M9 13v2"/></svg><span>ตู้เย็น</span></button>
-      <button type="button" data-nav="random" class="nav-main"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="9" cy="9" r=".9" fill="currentColor"/><circle cx="15" cy="15" r=".9" fill="currentColor"/><circle cx="15" cy="9" r=".9" fill="currentColor"/><circle cx="9" cy="15" r=".9" fill="currentColor"/></svg><span>สุ่มเมนู</span></button>
-      <button type="button" data-nav="plan"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>แผน</span></button>
-      <button type="button" data-nav="shop"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.3a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.2"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg><span>ซื้อของ</span><b id="nav-shop-count" hidden>0</b></button>
+      <button type="button" data-nav="home" class="is-active">
+        <svg
+          class="ico"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5h-5v5H5a1 1 0 0 1-1-1z" /></svg
+        ><span>หน้าแรก</span>
+      </button>
+      <button type="button" data-nav="fridge">
+        <svg
+          class="ico"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="6" y="3" width="12" height="18" rx="2" />
+          <path d="M6 10h12M9 6.5v1.5M9 13v2" /></svg
+        ><span>ตู้เย็น</span>
+      </button>
+      <button type="button" data-nav="random" class="nav-main">
+        <svg
+          class="ico"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="4" y="4" width="16" height="16" rx="3.5" />
+          <circle cx="9" cy="9" r=".9" fill="currentColor" />
+          <circle cx="15" cy="15" r=".9" fill="currentColor" />
+          <circle cx="15" cy="9" r=".9" fill="currentColor" />
+          <circle cx="9" cy="15" r=".9" fill="currentColor" /></svg
+        ><span>สุ่มเมนู</span>
+      </button>
+      <button type="button" data-nav="plan">
+        <svg
+          class="ico"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="3.5" y="5" width="17" height="15" rx="2.5" />
+          <path d="M3.5 10h17M8 3v4M16 3v4" /></svg
+        ><span>แผน</span>
+      </button>
+      <button type="button" data-nav="shop">
+        <svg
+          class="ico"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.3a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.2" />
+          <circle cx="9.5" cy="19.5" r="1.3" />
+          <circle cx="17" cy="19.5" r="1.3" /></svg
+        ><span>ซื้อของ</span><b id="nav-shop-count" hidden>0</b>
+      </button>
     </nav>
     <div id="overlay-root"></div>
+    <script src="recipes.js"></script>
+    <script src="i18n.js"></script>
+    <script src="core.js"></script>
     <script src="app.js"></script>
     <script src="features.js"></script>
   </body>
